@@ -1,5 +1,6 @@
 package cz.uhk.ppro.inzeraty.sluzby;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,6 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PametoveUlozisteInzeratu implements UlozisteInzeratu {
 	private List<Inzerat> inzeraty = new ArrayList<Inzerat>();
+
+	public PametoveUlozisteInzeratu(){
+		pridej(new Inzerat(Inzerat.Kategorie.NAKUP, "Koupím TV", BigDecimal.valueOf(7000)));
+		pridej(new Inzerat(Inzerat.Kategorie.PRODEJ, "Prodám lednici", BigDecimal.valueOf(5000)));
+		pridej(new Inzerat(Inzerat.Kategorie.VYMENA, "Vyměním žárovku", BigDecimal.valueOf(0)));
+	}
 
 	@Override
 	public List<Inzerat> getInzeraty() {
@@ -75,6 +82,15 @@ public class PametoveUlozisteInzeratu implements UlozisteInzeratu {
             }
         }
 		return vysledky;
+	}
+
+	public void upravInzerat(Inzerat inzerat){
+		for(int i = 0; i < inzeraty.size(); i++) {
+			if (inzeraty.get(i).getId() == inzerat.getId()) {
+				inzeraty.set(i, inzerat);
+				break;
+			}
+		}
 	}
 
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upravit inzerát</title>
+</head>
+<body>
+<a href="/">Inzeráty</a>
+
+<span th:if="${message}">
+    <p><b th:text="${message}"></b></p>
+</span>
+<form method="post" action="/upraveny-inzerat">
+<table>
+    <tr>
+        <td><b> Inzerát č. </b><b th:text="${i.id}"></b></td>
+        <input type="number" name="id" th:value="${i.id}" hidden/>
+    </tr>
+    <tr>
+        <td><label>Kategorie: </label>
+            <select id="kategorie" name="kategorie" th:value="${i.kategorie}">
+                <option th:each="k: ${kategorie}" th:value="${k}" th:text="${k}"></option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td><label>Popis: </label><input name="text" type="text" th:value="${i.text}"/></td>
+    </tr>
+    <tr>
+        <td><label>Cena: </label> <input name="cena" type= text th:value="${i.cena}"/></td>
+    </tr>
+    <tr>
+        <td><label>Heslo pro úpravu: </label> <input type="text" name="heslo" id="heslo"></td>
+    </tr>
+    <tr>
+        <td><button type="submit">Upravit</button> </td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

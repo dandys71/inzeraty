@@ -1,7 +1,9 @@
 package cz.uhk.ppro.inzeraty.model;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class Inzerat {
@@ -15,6 +17,13 @@ public class Inzerat {
 	public Inzerat() {
 		hesloProUpravu = UUID.randomUUID().toString().substring(0,6);
 		datum = new Date();
+	}
+
+	public Inzerat(String kategorie, String text, BigDecimal cena){
+		this();
+		this.kategorie = kategorie;
+		this.text = text;
+		this.cena = cena;
 	}
 	
 	public int getId() {
@@ -115,10 +124,14 @@ public class Inzerat {
 				+ hesloProUpravu + ", datum=" + datum + "]";
 	}
 
-	public class Kategorie{
-		public final String NAKUP = "Nákup";
-		public final String PRODEJ = "Prodej";
-		public final String VYMENA = "Výměna";
+	public static class Kategorie{
+		public static final String NAKUP = "Nákup";
+		public static final String PRODEJ = "Prodej";
+		public static final String VYMENA = "Výměna";
+
+		public static List<String> vratVsechnyKategorie(){
+			return Arrays.asList(NAKUP, PRODEJ, VYMENA);
+		}
 	}
 	
 	

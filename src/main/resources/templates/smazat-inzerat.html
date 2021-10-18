@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smazat inzerát</title>
+    <a href="/">Inzeráty</a>
+
+    <span th:if="${message}">
+    <p><b th:text="${message}"></b></p>
+</span>
+    <h2>Opravdu si přejete smazat tento inzerát?</h2>
+    <table>
+        <tr>
+            <td><b> Inzerát č. </b><b th:text="${i.id}"></b></td>
+        </tr>
+        <tr>
+            <td><label>Kategorie: </label> <b th:text="${i.kategorie}"></b></td>
+        </tr>
+        <tr>
+            <td><label>Popis: </label><b th:text="${i.text}"></b></td>
+        </tr>
+        <tr>
+            <td><label>Cena: </label> <b th:text="${i.cena}"></b></td>
+        </tr>
+
+        <tr>
+            <form method="post" action="smazany-inzerat">
+                <input type="number" name="id" th:value="${i.id}" hidden/>
+                <td><label>Heslo pro smazání</label><input type="text" name="heslo"></td>
+                <td><button type="submit">Smazat</button> </td>
+            </form>
+        </tr>
+    </table>
+
+</head>
+<body>
+
+</body>
+</html>

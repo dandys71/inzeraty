@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:f="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <a href="novy-inzerat">Nový inzerát</a>
+
+    <title>Inzeraty</title>
+    <h2>Inzeráty</h2>
+    <span th:if="${message}">
+        <p><b th:text="${message}"></b></p>
+    </span>
+    <form method="post">
+        <label for="kat">Inzeráty z kategorie: </label>
+        <select id="kat" name="kat">
+            <option value="vsechny">Všechny</option>
+            <option th:each="k: ${kategorie}" th:value="${k}" th:text="${k}"></option>
+        </select>
+        <button type="submit">Filtruj</button><br><br>
+    </form>
+
+    <table th:each="i: ${inzeraty}" style="border-style: solid; border-color: black; border-width: medium; margin: 10px;">
+
+        <tr>
+            <td><b> Inzerát č. </b><b th:text="${i.id}"></b></td>
+        </tr>
+        <tr>
+            <td><label>Kategorie: </label> <b th:text="${i.kategorie}"></b></td>
+        </tr>
+        <tr>
+            <td><label>Popis: </label><b th:text="${i.text}"></b></td>
+        </tr>
+        <tr>
+            <td><label>Cena: </label> <b th:text="${i.cena}"></b></td>
+        </tr>
+
+        <tr>
+            <form method="post" action="upravit-inzerat"><td><button type="submit" th:name="id" th:value="${i.id}">Upravit</button> </td></form>
+            <form method="post" action="smazat-inzerat"><td><button type="submit" th:name="id" th:value="${i.id}">Smazat</button> </td></form>
+
+        </tr>
+    </table>
+</head>
+<body>
+
+</body>
+</html>

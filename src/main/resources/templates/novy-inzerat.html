@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:t="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Vložit nový inzerát</title>
 </head>
 <body>
+<a href="/">Inzeráty</a>
+<h2>Vložit nový inzerát</h2>
+<form method="post" action="/pridany-inzerat">
+    <table>
+        <tr>
+            <td><label for="kategorie">Kategorie</label></td>
+                <td>
+                    <select id="kategorie" name="kategorie">
+                        <option th:each="k: ${kategorie}" th:value="${k}" th:text="${k}"></option>
+                    </select>
+                </td>
+        </tr>
+        <tr>
+            <td><label for="cena">Cena</label></td>
+            <td> <input type="number" id="cena" name="cena"/></td>
+        </tr>
+        <tr>
+            <td><label for="text">Popis inzerátu</label></td>
+            <td><textarea id="text" name="text"></textarea></td>
+        </tr>
+    </table>
+   <button type="submit" value="Submit">Přidat inzerát</button>
+</form>
 
 </body>
 </html>
